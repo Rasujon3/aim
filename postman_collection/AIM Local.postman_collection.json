@@ -1,0 +1,8522 @@
+{
+	"info": {
+		"_postman_id": "39627657-c175-401b-8d08-6e2a508e84b2",
+		"name": "AIM Local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29401253",
+		"_collection_link": "https://gold-equinox-393862.postman.co/workspace/Hotel-Management~6bf0d9f2-f8ca-496b-b611-808621f76eb7/collection/29401253-39627657-c175-401b-8d08-6e2a508e84b2?action=share&source=collection_link&creator=29401253"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "user-info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/user-info",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"user-info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-profile-update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "full_name",
+									"value": "Ruhul Amin Sujon",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sujon.egov@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/F:/Sujon_AS/laragon/www/hotel project/img/P_place/Rectangle 12.png",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "address",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/user-profile-update",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"user-profile-update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change-password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "current_password",
+									"value": "1234567",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "confirm_new_password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/change-password",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send-sms",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"artificialsoft\",\r\n  \"password\": \"artisoft@bd#321\",\r\n  \"sender\": \"03590001868\",\r\n  \"message\": \"Your OTP code is 123456\",\r\n  \"to\": \"8801799327845\"\r\n  \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.icombd.com/api/v2/sendsms/plaintext",
+							"protocol": "http",
+							"host": [
+								"api",
+								"icombd",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2",
+								"sendsms",
+								"plaintext"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot-password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "identifier",
+									"value": "01518376761",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/auth/forgot-password",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify-otp",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "identifier",
+									"value": "johnupdate@example.com",
+									"type": "text"
+								},
+								{
+									"key": "otp",
+									"value": "781292",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/auth/verify-otp",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"verify-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "identifier",
+									"value": "johnupdate@example.com",
+									"type": "text"
+								},
+								{
+									"key": "otp",
+									"value": "781292",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "new_password_confirmation",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/auth/reset-password",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token SuperAdmin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "superAdmin@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov2@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Receptionist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "bookings-list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/bookings/list?hotel_id=1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"list"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search-booking-by-user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "01764401651",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/bookings/search-booking-by-user",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"search-booking-by-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "checked_in",
+									"description": "checked_in,checked_out",
+									"type": "text"
+								},
+								{
+									"key": "booking_detail_id",
+									"value": "8",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/bookings/update-status",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"update-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"total\": 4000,\r\n  \"paid\": 400,\r\n  \"due\": 3600,\r\n  \"rooms\": [\r\n    {\r\n      \"hotel_id\": 1,\r\n      \"building_id\": 6,\r\n      \"floor_id\": 3,\r\n      \"room_id\": 4,\r\n      \"booking_start_date\": \"2025-10-14\",\r\n      \"booking_end_date\": \"2025-10-16\",\r\n      \"day_count\": 2,\r\n      \"rent\": 4000\r\n    }\r\n    // {\r\n    //   \"hotel_id\": 1,\r\n    //   \"floor_id\": 4,\r\n    //   \"room_id\": 10,\r\n    //   \"booking_start_date\": \"2025-09-16 12:00:00\",\r\n    //   \"booking_end_date\": \"2025-09-18 20:00:00\"\r\n    // }\r\n  ],\r\n  \"payment\": {\r\n    \"payment_type\": \"Online\",\r\n    \"payment_method\": \"bkash\",\r\n    \"acc_no\": \"01764401655\",\r\n    \"amount\": 400,\r\n    \"transaction_id\": \"TX123456789\",\r\n    \"reference\": \"Advance booking via bKash\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/bookings/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token SuperAdmin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "superAdmin@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov2@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Receptionist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "withdraw",
+			"item": [
+				{
+					"name": "Withdraws List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/withdraws/list",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"withdraws",
+								"list"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hotel-list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/admin/hotel-list",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"admin",
+								"hotel-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withdraws Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "Hotel Cash Out",
+									"type": "text"
+								},
+								{
+									"key": "payment_type",
+									"value": "Cash Out",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "200",
+									"type": "text"
+								},
+								{
+									"key": "withdraw_at",
+									"value": "2025-09-16 14:42:00",
+									"type": "text"
+								},
+								{
+									"key": "trx_id",
+									"value": "CXDT84514DFD84EDF",
+									"type": "text"
+								},
+								{
+									"key": "reference",
+									"value": "By Bkash_01630225015",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/withdraws/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"withdraws",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withdraw Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "Cash Out",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "withdraw_at",
+									"value": "2025-09-10 14:42:00",
+									"type": "text"
+								},
+								{
+									"key": "trx_id",
+									"value": "CXDT84514DFD84EDF",
+									"type": "text"
+								},
+								{
+									"key": "reference",
+									"value": "By Bkash_01630225015",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/withdraws/update/5",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"withdraws",
+								"update",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withdraw Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/withdraws/delete/4",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"withdraws",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token SuperAdmin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "superAdmin@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov22@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Receptionist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "withdrawal Methods",
+			"item": [
+				{
+					"name": "Withdrawal Methods List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/withdrawalMethods/list?hotel_id=1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"withdrawalMethods",
+								"list"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "withdrawalHistory",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/withdrawalMethods/withdrawal-history",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"withdrawalMethods",
+								"withdrawal-history"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withdrawal Methods Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "payment_method",
+									"value": "bank_account",
+									"description": "bkash,rocket,nagad,bank_account",
+									"type": "text"
+								},
+								{
+									"key": "acc_no",
+									"value": "123456789012",
+									"type": "text"
+								},
+								{
+									"key": "bank_name",
+									"value": "City Bank",
+									"type": "text"
+								},
+								{
+									"key": "branch_name",
+									"value": "Uttara Branch",
+									"type": "text"
+								},
+								{
+									"key": "routing_number",
+									"value": "987654321",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/withdrawalMethods/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"withdrawalMethods",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withdrawal Methods Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "payment_method",
+									"value": "bkash",
+									"description": "bkash,rocket,nagad,bank_account",
+									"type": "text"
+								},
+								{
+									"key": "acc_no",
+									"value": "123456789012",
+									"type": "text"
+								},
+								{
+									"key": "bank_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "branch_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "routing_number",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/withdrawalMethods/update/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"withdrawalMethods",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withdrawal Methods Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/withdrawalMethods/delete/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"withdrawalMethods",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov22@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Receptionist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Home",
+			"item": [
+				{
+					"name": "search-by-area",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "range",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "lat",
+									"value": "23.8103",
+									"type": "text"
+								},
+								{
+									"key": "long",
+									"value": "90.4125",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/homes/search-by-area",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"homes",
+								"search-by-area"
+							],
+							"query": [
+								{
+									"key": "range",
+									"value": "50",
+									"disabled": true
+								},
+								{
+									"key": "lat",
+									"value": "23",
+									"disabled": true
+								},
+								{
+									"key": "long",
+									"value": "47",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "property-type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/homes/property-type",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"homes",
+								"property-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "weekly-offers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/homes/weekly-offers",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"homes",
+								"weekly-offers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Popular Hotels",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/homes/popular-hotels",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"homes",
+								"popular-hotels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "popular-hotels-images",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/homes/popular-hotels-images",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"homes",
+								"popular-hotels-images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Popular Places",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/homes/popular-places",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"homes",
+								"popular-places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hotelsByPopularPlace",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "popular_place_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/homes/hotels-by-popular-place",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"homes",
+								"hotels-by-popular-place"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hotel Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/homes/hotel-details",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"homes",
+								"hotel-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Room Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "floor_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "booking_start_date",
+									"value": "2025-10-09 14:00:00",
+									"type": "text"
+								},
+								{
+									"key": "booking_end_date",
+									"value": "2025-10-11 11:00:00",
+									"type": "text"
+								},
+								{
+									"key": "building_id",
+									"value": "6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/homes/room-details",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"homes",
+								"room-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n//   \"booking_start_date\": \"2025-09-16 12:00:00\",\r\n//   \"booking_end_date\": \"2025-09-18 20:00:00\",\r\n//   \"check_in\": null,\r\n//   \"check_out\": null,\r\n  \"total\": 4000,\r\n  \"paid\": 400,\r\n  \"due\": 3600,\r\n  \"rooms\": [\r\n    {\r\n      \"hotel_id\": 1,\r\n      \"floor_id\": 3,\r\n      \"room_id\": 4,\r\n      \"booking_start_date\": \"2025-09-19 12:00:00\",\r\n      \"booking_end_date\": \"2025-09-21 20:00:00\",\r\n      \"day_count\": 2,\r\n      \"rent\": 4000\r\n    }\r\n    // {\r\n    //   \"hotel_id\": 1,\r\n    //   \"floor_id\": 4,\r\n    //   \"room_id\": 10,\r\n    //   \"booking_start_date\": \"2025-09-16 12:00:00\",\r\n    //   \"booking_end_date\": \"2025-09-18 20:00:00\"\r\n    // }\r\n  ],\r\n  \"payment\": {\r\n    \"payment_type\": \"Online\",\r\n    \"payment_method\": \"bkash\",\r\n    \"acc_no\": \"01764401655\",\r\n    \"amount\": 400,\r\n    \"transaction_id\": \"TX123456789\",\r\n    \"reference\": \"Advance booking via bKash\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/bookings/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-booking-status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "booking_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "checked_out",
+									"description": "checked_in,checked_out",
+									"type": "text"
+								},
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/bookings/update-status",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"update-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-check-in-status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "booking_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/bookings/update-check-in-status",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"update-check-in-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-check-out-status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "booking_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/bookings/update-check-out-status",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"update-check-out-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rating Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/ratings/delete/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"ratings",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov2@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Receptionist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Home 2",
+			"item": [
+				{
+					"name": "hotelsByPopularPlace",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "popular_place_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/homes/hotels-by-popular-place",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"homes",
+								"hotels-by-popular-place"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hotel-by-property-type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "property_type_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/homes/hotel-by-property-type",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"homes",
+								"hotel-by-property-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-booking-list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "booking_id",
+									"value": "9",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "pending",
+									"description": "'pending', 'confirmed', 'checked_in', 'checked_out', 'cancelled'",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/bookings/user-booking-list",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"user-booking-list"
+							],
+							"query": [
+								{
+									"key": "booking_id",
+									"value": "11",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-collect-due",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hotel_id\": 1,\r\n    \"booking_id\": 10,\r\n    \"payment_type\": \"Online\",\r\n    \"payment_method\": \"bkash\",\r\n    \"acc_no\": \"01764401655\",\r\n    \"amount\": 2000,\r\n    \"pay_type\": \"additional\",\r\n    \"transaction_id\": \"TX123456789\",\r\n    \"reference\": \"Advance booking via bKash\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/payments/user-collect-due",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"payments",
+								"user-collect-due"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov2@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Receptionist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "Due List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "01764401651",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/payments/due-list",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"payments",
+								"due-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Due Search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "01764401651",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/payments/due-search",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"payments",
+								"due-search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Due Collect",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "booking_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "booking_id",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "400",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/payments/collect-due",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"payments",
+								"collect-due"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  // \"booking_start_date\": \"2025-09-16 12:00:00\",\r\n  // \"booking_end_date\": \"2025-09-18 11:00:00\",\r\n  // \"check_in\": null,\r\n  // \"check_out\": null,\r\n  \"total\": 6000,\r\n  \"paid\": 600,\r\n  \"due\": 5400,\r\n  \"rooms\": [\r\n    {\r\n      \"hotel_id\": 1,\r\n      \"floor_id\": 3,\r\n      \"room_id\": 4,\r\n      \"booking_start_date\": \"2025-10-05 12:00:00\",\r\n      \"booking_end_date\": \"2025-10-07 11:00:00\",\r\n      \"day_count\": 2,\r\n      \"rent\": 4000\r\n    },\r\n    {\r\n      \"hotel_id\": 1,\r\n      \"floor_id\": 3,\r\n      \"room_id\": 5,\r\n      \"booking_start_date\": \"2025-10-05 12:00:00\",\r\n      \"booking_end_date\": \"2025-10-07 11:00:00\",\r\n      \"day_count\": 2,\r\n      \"rent\": 2000\r\n    }\r\n  ],\r\n  \"payment\": {\r\n    \"payment_type\": \"Online\",\r\n    \"payment_method\": \"bkash\",\r\n    \"acc_no\": \"01764401655\",\r\n    \"amount\": 600,\r\n    \"transaction_id\": \"TX123456789\",\r\n    \"reference\": \"Advance booking via bKash\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/bookings/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search-booking-by-user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "01764401651",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/bookings/search-booking-by-user",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"search-booking-by-user"
+							],
+							"query": [
+								{
+									"key": "phone",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-booking-status Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "booking_detail_id",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "checked_out",
+									"description": "checked_in,checked_out",
+									"type": "text"
+								},
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/bookings/update-status",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"bookings",
+								"update-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov2@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Receptionist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rating",
+			"item": [
+				{
+					"name": "Rating List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/ratings/list?hotel_id=2",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"ratings",
+								"list"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "2"
+								},
+								{
+									"key": "user_id",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rating Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "4.5",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Very Good",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/ratings/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"ratings",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rating Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "rating",
+									"value": "3.5",
+									"type": "text"
+								},
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Average",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/ratings/update/3",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"ratings",
+								"update",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rating Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/ratings/delete/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"ratings",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov22@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Receptionist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PopularPlace",
+			"item": [
+				{
+					"name": "PopularPlace List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/popularPlaces/list",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"popularPlaces",
+								"list"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "popularPlaces Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Sreemangal",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/F:/Sujon_AS/laragon/www/hotel project/img/P_place/Rectangle 13.png"
+								},
+								{
+									"key": "status",
+									"value": "Active",
+									"description": "Active,Inactive",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/popularPlaces/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"popularPlaces",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "popularPlaces Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Cox’s Bazar",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/F:/Sujon_AS/laragon/www/hotel project/img/P_place/Rectangle 13.png"
+								},
+								{
+									"key": "status",
+									"value": "Active",
+									"description": "Active,Inactive",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/popularPlaces/update/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"popularPlaces",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PopularPlace Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/popularPlaces/delete/2",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"popularPlaces",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token SuperAdmin Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "superAdmin@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov22@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Receptionist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Receptionists",
+			"item": [
+				{
+					"name": "Receptionists List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/receptionists/list?hotel_id=2",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"receptionists",
+								"list"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Receptionists Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "sujon",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sujon@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "01764401650",
+									"type": "text"
+								},
+								{
+									"key": "nid",
+									"value": "NID12345",
+									"type": "text"
+								},
+								{
+									"key": "shift",
+									"value": "Morning",
+									"description": "Morning,Evening,Night",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/F:/Sujon_AS/laragon/www/hotel project/img/profile.jpg"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/receptionists/register",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"receptionists",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Receptionists Edit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "John Doe update",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "johnupdate@example.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "1234567890",
+									"type": "text"
+								},
+								{
+									"key": "nid",
+									"value": "NID123456",
+									"type": "text"
+								},
+								{
+									"key": "shift",
+									"value": "Evening",
+									"description": "Morning,Evening,Night",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/F:/Sujon_AS/laragon/www/hotel project/img/profile.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/receptionists/update/4",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"receptionists",
+								"update",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Receptionists Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/receptionists/delete/4",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"receptionists",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    // pm.globals.set(\"local_token\", responseData.data.token);\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov22@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Expense",
+			"item": [
+				{
+					"name": "Expense List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/expenses/list?hotel_id=2",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"expenses",
+								"list"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expense Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Hand Wash",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "unit",
+									"value": "PCS",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "images[]",
+									"type": "file",
+									"src": "/F:/Sujon_AS/laragon/www/hotel project/img/icon/single_two_bed.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/expenses/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"expenses",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expense Show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/expenses/view/5",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"expenses",
+								"view",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expense Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Shampoo",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "200",
+									"type": "text"
+								},
+								{
+									"key": "unit",
+									"value": "PCS",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "images[]",
+									"type": "file",
+									"src": "/F:/Sujon_AS/laragon/www/hotel project/img/icon/Mask group (1).png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/expenses/update/5",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"expenses",
+								"update",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expense Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/expenses/delete/5",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"expenses",
+								"delete",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov3@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Offers",
+			"item": [
+				{
+					"name": "Offer List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/offers/list?hotel_id=1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"offers",
+								"list"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Offer Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "floor_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "room_no",
+									"value": "102",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "2025-10-15",
+									"type": "text"
+								},
+								{
+									"key": "end_date",
+									"value": "2025-10-25",
+									"type": "text"
+								},
+								{
+									"key": "rent",
+									"value": "2000",
+									"type": "text"
+								},
+								{
+									"key": "discount_amount",
+									"value": "1500",
+									"type": "text"
+								},
+								{
+									"key": "building_id",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "room_id",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/offers/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"offers",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Offer Show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/offers/view/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"offers",
+								"view",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Offer Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "hotel_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "floor_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "room_no",
+									"value": "102",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "2025-09-16",
+									"type": "text"
+								},
+								{
+									"key": "end_date",
+									"value": "2025-09-21",
+									"type": "text"
+								},
+								{
+									"key": "rent",
+									"value": "2000",
+									"type": "text"
+								},
+								{
+									"key": "discount_amount",
+									"value": "1000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/offers/update/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"offers",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Offer Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/offers/delete/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"offers",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Owner",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov2@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Registration",
+			"item": [
+				{
+					"name": "Login & Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.globals.set(\"token\", responseData.data.token);\r",
+									"    console.log(\"Token saved:\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov8@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "full_name",
+									"value": "Ruhul Amin",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sujon.egov8@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "01764401658",
+									"type": "text"
+								},
+								{
+									"key": "user_type_id",
+									"value": "2",
+									"description": "1= super_admin, 2= user, 3= owner, 4= receptionist",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "owner",
+									"type": "text"
+								},
+								{
+									"key": "lat",
+									"value": "23.8103",
+									"type": "text"
+								},
+								{
+									"key": "long",
+									"value": "90.4125",
+									"type": "text"
+								},
+								{
+									"key": "fbase",
+									"value": "firebase_token_123",
+									"type": "text"
+								},
+								{
+									"key": "refer_code",
+									"value": "LKC792",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "hotel_name",
+									"value": "Hotel 6",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "hotel_description",
+									"value": "hotel_description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "hotel_address",
+									"value": "hotel_address",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "package_id",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/register",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"token\", \"\");"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov@gmail.com",
+									"description": "email or phone",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/logout",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Packages",
+					"item": [
+						{
+							"name": "Package List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/packages/list",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"packages",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Package Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "5 Star Hotel",
+											"description": "3 Star Hotel,4 Star Hotel,5 Star Hotel",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "monthly",
+											"description": "monthly",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "2000",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Active",
+											"description": "Active,Inactive",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/packages/create",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"packages",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Package Show",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/packages/view/5",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"packages",
+										"view",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Package Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "5 Star Hotel",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "monthly",
+											"description": "weekly,monthly,yearly",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "6000.00",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Active",
+											"description": "Active,Inactive",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/packages/update/6",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"packages",
+										"update",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Package Delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Standard Plan",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "yearly",
+											"description": "weekly,monthly,yearly",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "6000.00",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Active",
+											"description": "Active,Inactive",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/packages/delete/3",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"packages",
+										"delete",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Hotel",
+					"item": [
+						{
+							"name": "hotel-owner-list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/admin/owner-list",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"admin",
+										"owner-list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "owner-status-update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "15",
+											"type": "text"
+										},
+										{
+											"key": "package_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "hotel_id",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/admin/owner-status-update",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"admin",
+										"owner-status-update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login & Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.globals.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token SuperAdmin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "superAdmin@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "full_name",
+									"value": "Ruhul Amin",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sujon.egov2@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "01764401652",
+									"type": "text"
+								},
+								{
+									"key": "user_type_id",
+									"value": "3",
+									"description": "1= super_admin, 2= user, 3= owner, 4= receptionist",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "owner",
+									"type": "text"
+								},
+								{
+									"key": "lat",
+									"value": "23.8103",
+									"type": "text"
+								},
+								{
+									"key": "long",
+									"value": "90.4125",
+									"type": "text"
+								},
+								{
+									"key": "fbase",
+									"value": "firebase_token_123",
+									"type": "text"
+								},
+								{
+									"key": "refer_code",
+									"value": "LKC792",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "hotel_name",
+									"value": "Hotel 1",
+									"type": "text"
+								},
+								{
+									"key": "hotel_description",
+									"value": "hotel_description",
+									"type": "text"
+								},
+								{
+									"key": "hotel_address",
+									"value": "hotel_address",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/register",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"local_token\", \"\");"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{local_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/logout",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Owner",
+			"item": [
+				{
+					"name": "Building",
+					"item": [
+						{
+							"name": "Building List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/buildings/list?hotel_id=1",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"buildings",
+										"list"
+									],
+									"query": [
+										{
+											"key": "hotel_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Building Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "hotel_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "5th Building",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Active",
+											"description": "Active,Inactive",
+											"type": "text"
+										},
+										{
+											"key": "images[]",
+											"type": "file",
+											"src": "/D:/laragon/www/AS/earning_app/yellow.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/buildings/create",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"buildings",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Building Show",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/buildings/view/6",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"buildings",
+										"view",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Building Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "hotel_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "1st Building up",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Active",
+											"description": "Active,Inactive",
+											"type": "text"
+										},
+										{
+											"key": "images[]",
+											"type": "file",
+											"src": "/C:/Users/User/Downloads/shap1.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/buildings/update/6",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"buildings",
+										"update",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Building Delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/buildings/delete/6",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"buildings",
+										"delete",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login & Get Token Owner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let responseData = pm.response.json();\r",
+											"\r",
+											"if (responseData.success && responseData.data.token) {\r",
+											"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "login",
+											"value": "sujon.egov2@gmail.com",
+											"description": "email or phone",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/login",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Floor",
+					"item": [
+						{
+							"name": "Floor List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/floors/list?hotel_id=1&building_id=6",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"floors",
+										"list"
+									],
+									"query": [
+										{
+											"key": "hotel_id",
+											"value": "1"
+										},
+										{
+											"key": "building_id",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Floor Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "hotel_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "building_id",
+											"value": "7",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "2nd Floor",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Active",
+											"description": "Active,Inactive",
+											"type": "text"
+										},
+										{
+											"key": "images[]",
+											"type": "file",
+											"src": "/F:/Sujon_AS/laragon/www/hotel project/img/P_place/Rectangle 12.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/floors/create",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"floors",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Floor Show",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/floors/view/11",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"floors",
+										"view",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Floor Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "hotel_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "building_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "1st Floor",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Active",
+											"description": "Active,Inactive",
+											"type": "text"
+										},
+										{
+											"key": "images[]",
+											"type": "file",
+											"src": [],
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/floors/update/8",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"floors",
+										"update",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Floor Delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/floors/delete/8",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"floors",
+										"delete",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login & Get Token Owner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let responseData = pm.response.json();\r",
+											"\r",
+											"if (responseData.success && responseData.data.token) {\r",
+											"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "login",
+											"value": "sujon.egov3@gmail.com",
+											"description": "email or phone",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/login",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Facility",
+					"item": [
+						{
+							"name": "Facility List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/facilities/list?hotel_id=1",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"facilities",
+										"list"
+									],
+									"query": [
+										{
+											"key": "hotel_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Facility Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "hotel_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Swimming Pool",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Active",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/facilities/create",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"facilities",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Facility Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "Active",
+											"description": "Active,Inactive",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Swimming Pool update 2",
+											"type": "text"
+										},
+										{
+											"key": "hotel_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/facilities/update/3",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"facilities",
+										"update",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Facility Delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/facilities/delete/1",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"facilities",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login & Get Token Owner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let responseData = pm.response.json();\r",
+											"\r",
+											"if (responseData.success && responseData.data.token) {\r",
+											"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "login",
+											"value": "sujon.egov22@gmail.com",
+											"description": "email or phone",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/login",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login & Get Token Receptionist",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let responseData = pm.response.json();\r",
+											"\r",
+											"if (responseData.success && responseData.data.token) {\r",
+											"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "login",
+											"value": "sujon@gmail.com",
+											"description": "email or phone",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/login",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Room",
+					"item": [
+						{
+							"name": "my-hotel-list Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/hotels/my-hotel-list",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"hotels",
+										"my-hotel-list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Floor List Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/floors/list?hotel_id=1",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"floors",
+										"list"
+									],
+									"query": [
+										{
+											"key": "hotel_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Room List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/rooms/list?hotel_id=1&building_id=1&floor_id=9",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"list"
+									],
+									"query": [
+										{
+											"key": "hotel_id",
+											"value": "1"
+										},
+										{
+											"key": "building_id",
+											"value": "1"
+										},
+										{
+											"key": "floor_id",
+											"value": "9"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Room Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "hotel_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "floor_id",
+											"value": "9",
+											"type": "text"
+										},
+										{
+											"key": "room_no",
+											"value": "101",
+											"type": "text"
+										},
+										{
+											"key": "bed_type",
+											"value": "Double",
+											"description": "in:Single,Double,Triple",
+											"type": "text"
+										},
+										{
+											"key": "num_of_beds",
+											"value": "2",
+											"description": "in:1,2,3",
+											"type": "text"
+										},
+										{
+											"key": "room_type",
+											"value": "AC",
+											"description": "in:AC,Non-AC",
+											"type": "text"
+										},
+										{
+											"key": "view",
+											"value": "Ocean View",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Active",
+											"description": "in:Active,Inactive",
+											"type": "text"
+										},
+										{
+											"key": "rent",
+											"value": "2000",
+											"type": "text"
+										},
+										{
+											"key": "discount_amount",
+											"value": "15",
+											"type": "text"
+										},
+										{
+											"key": "images[]",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "building_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/rooms/create",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Room Show",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/rooms/view/6",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"view",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Room Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "hotel_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "floor_id",
+											"value": "9",
+											"type": "text"
+										},
+										{
+											"key": "room_no",
+											"value": "101",
+											"type": "text"
+										},
+										{
+											"key": "bed_type",
+											"value": "Double",
+											"description": "in:Single,Double,Triple",
+											"type": "text"
+										},
+										{
+											"key": "num_of_beds",
+											"value": "2",
+											"description": "in:1,2,3",
+											"type": "text"
+										},
+										{
+											"key": "room_type",
+											"value": "Non-AC",
+											"description": "in:AC,Non-AC",
+											"type": "text"
+										},
+										{
+											"key": "view",
+											"value": "Ocean View Update",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Active",
+											"description": "in:Active,Inactive",
+											"type": "text"
+										},
+										{
+											"key": "rent",
+											"value": "2500",
+											"type": "text"
+										},
+										{
+											"key": "discount_amount",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "images[]",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "building_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/rooms/update/6",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"update",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Room Delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/rooms/delete/6",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"delete",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login & Get Token Owner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let responseData = pm.response.json();\r",
+											"\r",
+											"if (responseData.success && responseData.data.token) {\r",
+											"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "login",
+											"value": "sujon.egov2@gmail.com",
+											"description": "email or phone",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/login",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Hotel",
+					"item": [
+						{
+							"name": "revenueTracker",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "hotel_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "start_date",
+											"value": "2025-09-16",
+											"type": "text"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-09-18",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/hotels/revenue-tracker",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"hotels",
+										"revenue-tracker"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check-balance",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "hotel_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/hotels/check-balance",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"hotels",
+										"check-balance"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "property-type-list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/hotels/property-type-list",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"hotels",
+										"property-type-list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "my-hotel-list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/hotels/my-hotel-list",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"hotels",
+										"my-hotel-list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Room List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/rooms/list?hotel_id=1&floor_id=3",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"list"
+									],
+									"query": [
+										{
+											"key": "hotel_id",
+											"value": "1"
+										},
+										{
+											"key": "floor_id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Room Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "hotel_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "floor_id",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "room_no",
+											"value": "102",
+											"type": "text"
+										},
+										{
+											"key": "bed_type",
+											"value": "Double",
+											"description": "in:Single,Double,Triple",
+											"type": "text"
+										},
+										{
+											"key": "num_of_beds",
+											"value": "2",
+											"description": "in:1,2,3",
+											"type": "text"
+										},
+										{
+											"key": "room_type",
+											"value": "AC",
+											"description": "in:AC,Non-AC",
+											"type": "text"
+										},
+										{
+											"key": "view",
+											"value": "Ocean View",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Active",
+											"description": "in:Active,Inactive",
+											"type": "text"
+										},
+										{
+											"key": "rent",
+											"value": "2000",
+											"type": "text"
+										},
+										{
+											"key": "discount_amount",
+											"value": "15",
+											"type": "text"
+										},
+										{
+											"key": "system_commission",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "images[]",
+											"type": "file",
+											"src": [
+												"/F:/Sujon_AS/laragon/www/hotel project/img/icon/Mask group.png",
+												"/F:/Sujon_AS/laragon/www/hotel project/img/icon/single_two_bed.png"
+											]
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/rooms/create",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Room Show",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/rooms/view/1",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"view",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Hotel Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "full_name",
+											"value": "Ruhul Amin Sujon",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "hotel_name",
+											"value": "Hotel update",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "sujon.egov2@gmail.com",
+											"description": "johnupdate@example.com, sujon.egov22@gmail.com",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "hotel_address",
+											"value": "hotel_address update",
+											"type": "text"
+										},
+										{
+											"key": "hotel_description",
+											"value": "hotel_description update",
+											"type": "text"
+										},
+										{
+											"key": "images[]",
+											"type": "file",
+											"src": [
+												"/F:/Sujon_AS/laragon/www/hotel project/img/icon/double/double_1.png",
+												"/F:/Sujon_AS/laragon/www/hotel project/img/icon/double/double_2.png",
+												"/F:/Sujon_AS/laragon/www/hotel project/img/icon/double/double_3.png",
+												"/F:/Sujon_AS/laragon/www/hotel project/img/icon/Mask group (1).png"
+											],
+											"disabled": true
+										},
+										{
+											"key": "booking_percentage",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "check_in_time",
+											"value": "12:00 PM",
+											"type": "text"
+										},
+										{
+											"key": "check_out_time",
+											"value": "11:00 AM",
+											"type": "text"
+										},
+										{
+											"key": "popular_place_id",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "system_commission",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "property_type_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/hotels/update/1",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"hotels",
+										"update",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Room Delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{local_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/rooms/delete/2",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"rooms",
+										"delete",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login & Get Token Owner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let responseData = pm.response.json();\r",
+											"\r",
+											"if (responseData.success && responseData.data.token) {\r",
+											"    pm.collectionVariables.set(\"local_token\", responseData.data.token);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "login",
+											"value": "sujon.egov2@gmail.com",
+											"description": "email or phone",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}api/v1/login",
+									"host": [
+										"{{base_url}}api"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "iqFidfsGafL3SE7Vw6WdZM7itKcmRF1k0ufasc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "meter_no",
+							"value": "10110526361",
+							"type": "text"
+						},
+						{
+							"key": "biller_mobile_no",
+							"value": "01717588386",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "650",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://shl.com.bd/api/appapi/billpay/fetch/bpdb-prepaid",
+					"protocol": "https",
+					"host": [
+						"shl",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"appapi",
+						"billpay",
+						"fetch",
+						"bpdb-prepaid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "iqFidfsGafL3SE7Vw6WdZM7itKcmRF1k0ufasc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bill_payment_id\": \"81409\",\r\n    \"bill_refer_id\": \"315M15VMF92CISUYHA8MPWTP7IW33MYU\",\r\n    \"pin\": \"123457\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://shl.com.bd/api/appapi/billpay/pay/bill-payment-common",
+					"protocol": "https",
+					"host": [
+						"shl",
+						"com",
+						"bd"
+					],
+					"path": [
+						"api",
+						"appapi",
+						"billpay",
+						"pay",
+						"bill-payment-common"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local_token",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
