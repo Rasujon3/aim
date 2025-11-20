@@ -16,20 +16,20 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'full_name'     => 'Super Admin',
-            'email'         => 'superAdmin@gmail.com',
-            'phone'         => '01712345678',
-            'user_type_id'  => 1, // super_admin
-            'role'          => 'super_admin',
-            'ip_address'    => '127.0.0.1',
-            'lat'           => '0',
-            'long'          => '0',
-            'day'           => now()->format('d'),
-            'month'         => now()->format('M'),
-            'year'          => now()->format('Y'),
-            'password'      => Hash::make('123456'), // change in production
-            'token'         => Str::random(60),
-            'status'        => 'Active',
+            'full_name'      => 'Super Administrator',
+            'email'          => 'super.admin@gmail.com',
+            'role_id'        => null,
+            'role'           => 'super_admin',
+            'ip_address'     => '127.0.0.1',
+            'is_view_all'    => '1',
+            'is_create_all'  => '1',
+            'is_edit_all'    => '1',
+            'password'       => '123456',
+            'token'          => null,
+            'email_verified_at' => now(),
+            'status'         => 'Active',
+            'created_by'     => null,
+            'updated_by'     => null,
         ]);
     }
 }

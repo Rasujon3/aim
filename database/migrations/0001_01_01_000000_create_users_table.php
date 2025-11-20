@@ -15,21 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('full_name')->nullable();
             $table->string('email')->unique();
-            $table->string('phone')->unique();
-            $table->string('user_type_id')->nullable();
+            $table->string('role_id')->nullable();
             $table->string('role')->nullable();
             $table->string('ip_address')->nullable();
-            $table->string('lat')->nullable();
-            $table->string('long')->nullable();
-            $table->string('day')->nullable();
-            $table->string('month')->nullable();
-            $table->string('year')->nullable();
-            $table->string('fbase')->nullable();
-            $table->string('refer_code')->nullable();
+            $table->string('is_view_all')->default(false)->nullable();
+            $table->string('is_create_all')->default(false)->nullable();
+            $table->string('is_edit_all')->default(false)->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('token');
+            $table->string('password')->nullable();
+            $table->string('token')->nullable();
             $table->enum('status', ['Active', 'Inactive'])->nullable()->default('Active');
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -48,6 +45,25 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        /*
+        Schema::create('personal_access_tokens', function (Blueprint $table) {
+            $table->id();
+
+            $table->morphs('tokenable');
+
+            $table->string('name');
+            $table->string('token', 64)->unique();
+
+            $table->text('abilities')->nullable();
+            $table->timestamp('last_used_at')->nullable();
+            $table->timestamp('expires_at')->nullable();
+
+            $table->timestamps();
+
+            $table->index(['tokenable_type', 'tokenable_id']);
+        });
+        */
     }
 
     /**
@@ -58,5 +74,6 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('personal_access_tokens');
     }
 };

@@ -18,8 +18,8 @@ class RoleSeeder extends Seeder
             [
                 'is_editable'   => false,
                 'is_deletable'  => false,
-                'created_by'    => 7,
-                'updated_by'    => 7,
+                'created_by'    => 1,
+                'updated_by'    => 1,
             ]
         );
     }
