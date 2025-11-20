@@ -74,6 +74,6 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
-        Schema::dropIfExists('personal_access_tokens');
+//        Schema::dropIfExists('personal_access_tokens');
     }
 };
