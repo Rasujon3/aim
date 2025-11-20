@@ -38,20 +38,20 @@ class LoginController extends AppBaseController
 
             if (!$user || !Hash::check($request->password, $user->password)) {
                 RateLimiter::hit($key, 60);
-                return $this->sendError('দুঃখিত, ইমেইল/ফোন অথবা পাসওয়ার্ড ভুল।', 401);
+                return $this->sendError('These credentials do not match our records.', 401);
             }
 
             RateLimiter::clear($key);
 
-            // JWT টোকেন তৈরি করা হচ্ছে
+            // JWT token create
             $token = JWTAuth::fromUser($user);
 
             return $this->sendResponse([
                 'token' => $token,
                 'token_type' => 'bearer',
-                'expires_in' => auth('api')->factory()->getTTL() * 60, // সেকেন্ডে
+                'expires_in' => auth('api')->factory()->getTTL() * 60,
                 'user' => $user
-            ], 'লগইন সফল হয়েছে!');
+            ], 'Login successful.');
 
         } catch (Exception $e) {
             // Log the error
@@ -106,12 +106,19 @@ class LoginController extends AppBaseController
     public function logout(Request $request)
     {
         try {
-            // বর্তমান টোকেনকে blacklist/ইনভ্যালিড করা
+            // Present token -> blacklist/Invalid
             JWTAuth::invalidate(JWTAuth::getToken());
 
-            return $this->sendSuccess('সফলভাবে লগআউট হয়েছে।');
+            return $this->sendSuccess('Logout Successful.');
         } catch (Exception $e) {
-            return $this->sendError('লগআউট করতে সমস্যা হয়েছে।', 500);
+            Log::error('Error logout: ' , [
+                'message' => $e->getMessage(),
+                'code' => $e->getCode(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            return $this->sendError('Something went wrong!!!', 500);
         }
     }
 

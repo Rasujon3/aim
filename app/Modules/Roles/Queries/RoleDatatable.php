@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Floors\Queries;
+namespace App\Modules\Roles\Queries;
 
 use App\Modules\Areas\Models\Area;
 use App\Modules\City\Models\City;
 use App\Modules\States\Models\State;
 use App\Modules\States\Repositories\StateRepository;
 
-class FloorDatatable
+class RoleDatatable
 {
     protected $stateRepository;
 

@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Modules\Buildings\Requests;
+namespace App\Modules\Roles\Requests;
 
-use App\Modules\Areas\Models\Area;
-use App\Modules\Buildings\Models\Building;
-use App\Modules\Floors\Models\Floor;
-use App\Modules\Packages\Models\Package;
+use App\Modules\Roles\Models\Role;
 use Illuminate\Foundation\Http\FormRequest;
 
-class BuildingRequest extends FormRequest
+class RoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -49,16 +46,16 @@ class BuildingRequest extends FormRequest
         $areaId = $this->route('area') ?: null;
         */
 
-        if ($routeName === 'buildings.update') {
-            return Building::updateRules();
+//        if ($routeName === 'roles.update') {
+//            return Role::updateRules();
+//        }
+
+        if ($routeName === 'roles.list') {
+            return Role::listRules();
         }
 
-        if ($routeName === 'buildings.list') {
-            return Building::listRules();
-        }
+        $id = $this->route('roles') ?: null;
 
-        $id = $this->route('building') ?: null;
-
-        return Building::rules($id);
+        return Role::rules($id);
     }
 }

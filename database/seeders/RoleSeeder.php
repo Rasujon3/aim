@@ -2,20 +2,25 @@
 
 namespace Database\Seeders;
 
+use App\Modules\Roles\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
-use App\Models\Permission;
+
 class RoleSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
     {
-        $admin = Role::updateOrCreate(['name' => 'admin', 'guard_name' => 'api']);
-        $editor = Role::updateOrCreate(['name' => 'editor', 'guard_name' => 'api']);
-
-        $permissions = Permission::pluck('name')->toArray();
-
-        $admin->syncPermissions($permissions);
-        $editor->syncPermissions(['view_users', 'edit_users']);
+        Role::updateOrCreate(
+            ['name' => 'Admin'],
+            [
+                'is_editable'   => false,
+                'is_deletable'  => false,
+                'created_by'    => 7,
+                'updated_by'    => 7,
+            ]
+        );
     }
 }
