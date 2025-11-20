@@ -13,154 +13,115 @@ use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\RateLimiter;
 use Carbon\Carbon;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class LoginController extends AppBaseController
 {
     public function login(Request $request)
     {
         try {
-            // Validate request
             $request->validate([
                 'login' => 'required|string',
                 'password' => 'required|string',
             ]);
 
-            // Rate limiting to prevent brute-force attacks
             $key = 'login_attempts:' . $request->ip();
             if (RateLimiter::tooManyAttempts($key, 5)) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Too many login attempts. Please try again later.',
-                ], 429);
+                return $this->sendError('Too many login attempts. Try again later.', 429);
             }
 
-            DB::beginTransaction();
+            $field = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'phone';
 
-            // Find user by phone or email
-            $user = User::where('email', $request->login)
-                ->orWhere('phone', $request->login)
-                ->where('status', "Active")
+            $user = User::where($field, $request->login)
+                ->where('status', 'Active')
                 ->first();
 
-            // Validate user and password
             if (!$user || !Hash::check($request->password, $user->password)) {
-                RateLimiter::hit($key, 60); // Increase failed login count (lockout for 1 minute)
-                return $this->sendError('The provided credentials are incorrect.', 401);
+                RateLimiter::hit($key, 60);
+                return $this->sendError('দুঃখিত, ইমেইল/ফোন অথবা পাসওয়ার্ড ভুল।', 401);
             }
 
-            // Reset login attempts after successful login
             RateLimiter::clear($key);
 
-            // Generate API token immediately if OTP is not enabled
-            $token = $user->createToken('API Token')->plainTextToken;
-
-            DB::commit();
+            // JWT টোকেন তৈরি করা হচ্ছে
+            $token = JWTAuth::fromUser($user);
 
             return $this->sendResponse([
                 'token' => $token,
-                'user' => $user,
-            ], 'Login successful.');
-        } catch (ValidationException $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validation error',
-                'errors' => $e->errors(),
-            ], 422);
+                'token_type' => 'bearer',
+                'expires_in' => auth('api')->factory()->getTTL() * 60, // সেকেন্ডে
+                'user' => $user
+            ], 'লগইন সফল হয়েছে!');
+
         } catch (Exception $e) {
-            DB::rollBack();
-            Log::error('Error during login: ' . $e->getMessage(), [
-                'trace' => $e->getTraceAsString(),
+            // Log the error
+            Log::error('Error in get File: ', [
+                'message' => $e->getMessage(),
+                'code' => $e->getCode(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString()
             ]);
 
-            return response()->json([
-                'success' => false,
-                'message' => 'Something went wrong!!!',
-            ], 500);
+            return $this->sendError('Something went wrong!!!', 500);
         }
     }
+
+    // OTP দিয়ে লগইন করলে (যদি OTP চালু থাকে)
     public function verifyOtp(Request $request)
     {
-        try {
-            // Validate request
-            $request->validate([
-                'username' => 'required|string',
-                'otp' => 'required|digits:6',
-            ]);
+        $request->validate([
+            'username' => 'required|string',
+            'otp' => 'required|digits:6',
+        ]);
 
-            // Apply rate limiting to prevent brute-force OTP attacks
-            $key = 'otp_verify_attempts:' . $request->ip();
-            if (RateLimiter::tooManyAttempts($key, 5)) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Too many OTP attempts. Please try again later.',
-                ], 429);
-            }
-
-            DB::beginTransaction();
-
-            // Find user by username and OTP
-            $user = User::where('username', $request->username)
-                ->where('otp', $request->otp)
-                ->first();
-
-            // Validate OTP
-            if (!$user) {
-                RateLimiter::hit($key, 60); // Increment failed attempts (lockout for 1 min)
-                return $this->sendError('Invalid OTP code.', 401);
-            }
-
-            // Clear OTP after successful verification
-            $user->update(['otp' => null]);
-
-            // Reset OTP attempts after success
-            RateLimiter::clear($key);
-
-            // Generate API token
-            $token = $user->createToken('API Token')->plainTextToken;
-
-            DB::commit();
-
-            return $this->sendResponse(['token' => $token], 'OTP verified successfully.');
-        } catch (Exception $e) {
-            DB::rollBack();
-            Log::error('Error during OTP verification: ' . $e->getMessage(), [
-                'trace' => $e->getTraceAsString(),
-            ]);
-
-            return response()->json([
-                'success' => false,
-                'message' => 'An error occurred while verifying the OTP.',
-            ], 500);
+        $key = 'otp_verify_attempts:' . $request->ip();
+        if (RateLimiter::tooManyAttempts($key, 5)) {
+            return $this->sendError('অনেকবার ভুল OTP দিয়েছেন। একটু পরে চেষ্টা করুন।', 429);
         }
+
+        $user = User::where('username', $request->username)
+            ->where('otp', $request->otp)
+            ->first();
+
+        if (!$user) {
+            RateLimiter::hit($key, 60);
+            return $this->sendError('OTP ভুল হয়েছে।', 401);
+        }
+
+        // OTP ক্লিয়ার করো
+        $user->update(['otp' => null]);
+        RateLimiter::clear($key);
+
+        // JWT টোকেন দাও
+        $token = JWTAuth::fromUser($user);
+
+        return $this->sendResponse([
+            'token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60,
+        ], 'OTP যাচাই সফল। লগইন হয়েছে।');
     }
+
+    // লগআউট (JWT এর ক্ষেত্রে টোকেন ইনভ্যালিড করে দিতে হয়)
     public function logout(Request $request)
     {
         try {
-            // Ensure the user is authenticated
-            if (!$request->user()) {
-                return $this->sendError('Unauthorized', 401);
-            }
+            // বর্তমান টোকেনকে blacklist/ইনভ্যালিড করা
+            JWTAuth::invalidate(JWTAuth::getToken());
 
-            DB::beginTransaction();
-
-            if ($request->user()) {
-                // Delete all tokens for the authenticated user
-                $request->user()->tokens()->delete();
-            }
-
-            DB::commit();
-
-            return $this->sendSuccess('Logged out successfully.');
+            return $this->sendSuccess('সফলভাবে লগআউট হয়েছে।');
         } catch (Exception $e) {
-            DB::rollBack();
-            Log::error('Error during logout: ' . $e->getMessage(), [
-                'trace' => $e->getTraceAsString(),
-            ]);
-
-            return response()->json([
-                'success' => false,
-                'message' => 'An error occurred while logging out.',
-            ], 500);
+            return $this->sendError('লগআউট করতে সমস্যা হয়েছে।', 500);
         }
+    }
+
+    // অপশনাল: টোকেন রিফ্রেশ করার জন্য
+    public function refresh()
+    {
+        return $this->sendResponse([
+            'token' => JWTAuth::refresh(),
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60
+        ], 'টোকেন রিফ্রেশ হয়েছে।');
     }
 }
