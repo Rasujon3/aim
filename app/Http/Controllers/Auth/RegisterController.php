@@ -7,7 +7,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use App\Modules\Hotels\Models\Hotel;
+use App\Modules\Roles\Models\Role;
 use App\Services\S3Service;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Http\Controllers\AppBaseController;
@@ -19,87 +21,31 @@ use Stevebauman\Location\Facades\Location;
 
 class RegisterController extends AppBaseController
 {
-    public function register(RegisterRequest $request, S3Service $s3)
+    public function register(RegisterRequest $request)
     {
         DB::beginTransaction();
         try {
-            $myReferCode = $this->generateUniqueReferCode();
             $ipAddress = $request->ip();
-
-            $lat = $request->lat ?? '';
-            $long = $request->long ?? '';
-
-            if (empty($lat) && empty($long)) {
-                $position = Location::get($ipAddress);
-
-                if ($position) {
-                    $lat = $position->latitude;
-                    $long = $position->longitude;
-                }
-            }
-
-            $now = Carbon::now();
-
-            $day   = $now->format('d');
-            $month = $now->format('M');
-            $year  = $now->format('Y');
-
-            $image_url = '';
-            $image_path = '';
-            if($request->hasFile('image')) {
-                $file = $request->file('image');
-                $result = $s3->upload($file, 'profile');
-
-                if ($result) {
-                    $image_url = $result['url'];
-                    $image_path = $result['path'];
-                }
-            }
+            $role = Role::where('id', $request->role_id)->first();
 
             // Create new user
             $user = User::create([
                 'full_name'        => $request->full_name,
                 'email'            => $request->email,
-                'phone'            => $request->phone,
-                'user_type_id'     => $request->user_type_id,
-                'role'             => $request->role,
+                'role_id'          => $request->role_id,
+                'role'             => $role->name ?? null,
+                'is_view_all'      => $request->is_view_all ?? false,
+                'is_create_all'    => $request->is_create_all ?? false,
+                'is_edit_all'      => $request->is_edit_all ?? false,
                 'ip_address'       => $ipAddress,
-                'lat'              => $lat,
-                'long'             => $long,
-                'day'              => $day,
-                'month'            => $month,
-                'year'             => $year,
-                'fbase'            => $request->fbase ?? '',
-                'refer_code'       => $request->refer_code ?? '',
-                'image_url'        => $image_url,
-                'image_path'       => $image_path,
-                'my_refer_code'    => $myReferCode,
-                'password'         => Hash::make($request->password),
+                'password'         => $request->password,
+                'created_by'       => Auth::user()->id ?? null,
                 'status'           => 'Active'
             ]);
-
-            // ✅ If owner, also create hotel record
-            if ($request->user_type_id == 3 && $request->role === 'owner') {
-                $hotel =  Hotel::create([
-                    'user_id'           => $user->id,
-                    'hotel_name'        => $request->hotel_name,
-                    'hotel_description' => $request->hotel_description,
-                    'hotel_address'     => $request->hotel_address,
-                    'lat'               => $lat,
-                    'long'              => $long,
-                    'package_id'        => $request->package_id,
-                    'status'            => 'Active',
-                ]);
-                $user->update(['hotel_id' => $hotel->id]);
-            }
-
-            // Generate API token
-            $token = $user->createToken('API Token')->plainTextToken;
 
             DB::commit();
 
             return $this->sendResponse([
-                'token' => $token,
                 'user' => $user,
             ], 'User created successfully.');
 
@@ -107,7 +53,7 @@ class RegisterController extends AppBaseController
             DB::rollBack();
 
             // Log the error
-            Log::error('Error in updating Register: ', [
+            Log::error('Error in Register: ', [
                 'message' => $e->getMessage(),
                 'code' => $e->getCode(),
                 'line' => $e->getLine(),
@@ -120,23 +66,11 @@ class RegisterController extends AppBaseController
             ], 500);
         }
     }
-    private function generateUniqueReferCode()
-    {
-        do {
-            $letters = Str::upper(Str::random(3)); // random 3 letters
-            $numbers = random_int(100, 999);             // random 3 digit number
-            $code = $letters . $numbers;
-
-        } while (User::where('my_refer_code', $code)->exists());
-
-        return (string) $code;
-    }
-    public function userInfo()
+    public function userInfo(RegisterRequest $request)
     {
         DB::beginTransaction();
         try {
-            $userId = auth()->user()->id;
-            $user = User::with('hotel', 'hotel.images')->where('id', $userId)->first();
+            $user = User::where('id', $request->user_id)->first();
 
             DB::commit();
 
@@ -146,7 +80,7 @@ class RegisterController extends AppBaseController
             DB::rollBack();
 
             // Log the error
-            Log::error('Error in updating userInfo: ', [
+            Log::error('Error in userInfo: ', [
                 'message' => $e->getMessage(),
                 'code' => $e->getCode(),
                 'line' => $e->getLine(),
@@ -159,37 +93,59 @@ class RegisterController extends AppBaseController
             ], 500);
         }
     }
-    public function userProfileUpdate(RegisterRequest $request, S3Service $s3)
+    public function userList()
+    {
+        try {
+            $data = User::where('role_id', '!=', null)
+                ->where('role', '!=', 'super_admin')
+                ->where('status', 'Active')
+                ->orderBy('created_at', 'DESC')
+                ->get();
+
+            return $this->sendResponse($data, 'Data retrieved successfully.');
+
+        } catch (Exception $e) {
+            // Log the error
+            Log::error('Error in userList: ', [
+                'message' => $e->getMessage(),
+                'code' => $e->getCode(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong!!!',
+            ], 500);
+        }
+    }
+    public function userProfileUpdate(RegisterRequest $request)
     {
         DB::beginTransaction();
         try {
-            $auth = auth()->user();
-            if ($auth->id != $request->user_id) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Unauthorized action.',
-                ], 403);
-            }
+            $ipAddress = $request->ip();
             $user = User::where('id', $request->user_id)->first();
 
-            $image_url = $user->image_url;
-            $image_path = $user->image_path;
-            if($request->hasFile('image')) {
-                $file = $request->file('image');
-                $result = $s3->upload($file, 'profile');
+            $role_id = $user->role_id;
+            $role = $user->role;
 
-                if ($result) {
-                    $image_url = $result['url'];
-                    $image_path = $result['path'];
-                }
+            if ($role_id != $request->role_id) {
+                $roleData = Role::where('id', $request->role_id)->first();
+                $role_id = $roleData->id ?? null;
+                $role = $roleData->name ?? null;
             }
 
             $user->update([
-                'full_name'    => $request->full_name ?? $user->full_name,
-                'email'        => $request->email ?? $user->email,
-                'image_url'    => $image_url,
-                'image_path'   => $image_path,
-                'address'      => $request->address ?? $user->address,
+                'full_name'        => $request->full_name ?? $user->full_name,
+                'email'            => $request->email ?? $user->email,
+                'role_id'          => $role_id,
+                'role'             => $role,
+                'is_view_all'      => $request->is_view_all ?? $user->is_view_all,
+                'is_create_all'    => $request->is_create_all ?? $user->is_create_all,
+                'is_edit_all'      => $request->is_edit_all ?? $user->is_edit_all,
+                'ip_address'       => $ipAddress,
+                'password'         => $request->password ?? $user->password,
+                'updated_by'       => Auth::user()->id ?? null,
             ]);
 
             DB::commit();
@@ -203,6 +159,34 @@ class RegisterController extends AppBaseController
 
             // Log the error
             Log::error('Error in updating User: ', [
+                'message' => $e->getMessage(),
+                'code' => $e->getCode(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Something went wrong!!!',
+            ], 500);
+        }
+    }
+    public function userProfileDelete(RegisterRequest $request)
+    {
+        DB::beginTransaction();
+        try {
+            $user = User::where('id', $request->user_id)->first();
+            $user->delete();
+
+            DB::commit();
+
+            return $this->sendSuccess('User deleted successfully.');
+
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            // Log the error
+            Log::error('Error in deleting User: ', [
                 'message' => $e->getMessage(),
                 'code' => $e->getCode(),
                 'line' => $e->getLine(),

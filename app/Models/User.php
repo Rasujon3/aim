@@ -30,30 +30,18 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'full_name',
         'email',
-        'phone',
-        'address',
-        'user_type_id',
+        'role_id',
         'role',
         'ip_address',
-        'lat',
-        'long',
-        'day',
-        'month',
-        'year',
-        'fbase',
-        'refer_code',
-        'my_refer_code',
-        'email_verified_at',
+        'is_view_all',
+        'is_create_all',
+        'is_edit_all',
         'password',
         'token',
         'status',
-        'hotel_id',
-        'image_url',
-        'image_path',
-        'otp',
-        'otp_expires_at',
-        'otp_request_count',
-        'otp_last_request_date',
+        'email_verified_at',
+        'created_by',
+        'updated_by',
     ];
 
     /**
@@ -64,8 +52,6 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password',
         'remember_token',
-        'otp',
-        'image_path',
     ];
 
     /**
@@ -77,10 +63,12 @@ class User extends Authenticatable implements JWTSubject
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-            'otp_enabled' => 'boolean',
-            'otp_last_request_date' => 'datetime',
-            'otp_expires_at' => 'datetime', // if you have this field
+            'password'          => 'hashed',
+            'is_view_all'       => 'boolean',
+            'is_create_all'     => 'boolean',
+            'is_edit_all'       => 'boolean',
+            'created_at'        => 'datetime',
+            'updated_at'        => 'datetime',
         ];
     }
 
@@ -90,35 +78,16 @@ class User extends Authenticatable implements JWTSubject
         $rules = [
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email',
-            'phone' => 'required|string|max:20|unique:users,phone',
-            'user_type_id' => 'required|in:2,3',
-            'role' => 'required|string|in:user,owner',
+            'role_id' => 'required|exists:roles,id',
+            'role' => 'nullable|string|max:100',
             'ip_address' => 'nullable|ip',
-            'lat' => 'nullable|numeric',
-            'long' => 'nullable|numeric',
-            'day' => 'nullable|string|max:2',
-            'month' => 'nullable|string',
-            'year' => 'nullable|string|max:4',
-            'fbase' => 'nullable|string|max:255',
-            'refer_code' => 'nullable|string|max:50|exists:users,my_refer_code',
-            'my_refer_code' => 'nullable|string|max:50',
+            'is_view_all' => 'required|boolean',
+            'is_create_all' => 'required|boolean',
+            'is_edit_all' => 'required|boolean',
             'email_verified_at' => 'nullable|date',
             'password' => 'required|string|min:6',
             'confirm_password' => 'required|string|min:6|same:password',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ];
-
-        // If request is passed, check for owner-specific rules
-        if ($request && $request->user_type_id == 3 && $request->role === 'owner') {
-            $rules = array_merge($rules, [
-                'hotel_name' => 'required|string|max:255',
-                'hotel_description' => 'required|string',
-                'hotel_address' => 'required|string|max:255',
-                'lat' => 'required|numeric',
-                'long' => 'required|numeric',
-                'package_id' => 'required|numeric|exists:packages,id',
-            ]);
-        }
 
         return $rules;
     }
@@ -134,8 +103,15 @@ class User extends Authenticatable implements JWTSubject
             'user_id' => 'required|numeric|exists:users,id',
             'full_name' => 'required|string|max:255',
             'email' => ['required', 'email', 'max:255', $uniqueEmailRule],
-            'address' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+            'role_id' => 'required|exists:roles,id',
+            'role' => 'nullable|string|max:100',
+            'ip_address' => 'nullable|ip',
+            'is_view_all' => 'required|boolean',
+            'is_create_all' => 'required|boolean',
+            'is_edit_all' => 'required|boolean',
+            'email_verified_at' => 'nullable|date',
+            'password' => 'nullable|string|min:6',
+            'confirm_password' => 'nullable|string|min:6|same:password',
         ];
 
         return $rules;
@@ -156,6 +132,14 @@ class User extends Authenticatable implements JWTSubject
             'user_id' => 'required|exists:users,id',
             'package_id' => 'required|exists:packages,id',
             'hotel_id' => 'required|exists:hotels,id',
+        ];
+
+        return $rules;
+    }
+    public static function userInfoRules()
+    {
+        $rules = [
+            'user_id' => 'required|numeric|exists:users,id',
         ];
 
         return $rules;

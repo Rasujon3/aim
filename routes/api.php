@@ -8,17 +8,19 @@ Route::prefix('/v1')->middleware('api')->group(function () {
     Route::post('/login', [LoginController::class, 'login']);
     Route::post('/verify-otp', [LoginController::class, 'verifyOtp']);
     Route::middleware('auth:api')->group(function () {
+        Route::post('/register', [RegisterController::class, 'register']);
+        Route::get('/user-info', [RegisterController::class, 'userInfo'])->name('user.info');
+        Route::get('/user-list', [RegisterController::class, 'userList'])->name('user.list');
+        Route::post('/user-profile-update', [RegisterController::class, 'userProfileUpdate'])->name('user.profile.update');
+        Route::post('/user-profile-delete', [RegisterController::class, 'userProfileDelete'])->name('user.profile.delete');
         Route::post('/logout', [LoginController::class, 'logout']);
         Route::post('/refresh', [LoginController::class, 'refresh']);
         Route::get('/user', function () {
             return response()->json(auth('api')->user());
         });
     });
-    // Route::post('/logout', [LoginController::class, 'logout'])->name('user.logout');
-    Route::post('/register', [RegisterController::class, 'register']);
-    Route::get('/user-info', [RegisterController::class, 'userInfo'])->name('user.info')->middleware(['auth:sanctum', 'roles:user,owner,receptionist']);
-    Route::post('/user-profile-update', [RegisterController::class, 'userProfileUpdate'])->name('user.profile.update')->middleware(['auth:sanctum', 'roles:user,owner,receptionist']);
-    Route::post('/change-password', [RegisterController::class, 'changePassword'])->name('user.change-password')->middleware(['auth:sanctum', 'roles:user,owner,receptionist']);
+
+    Route::post('/change-password', [RegisterController::class, 'changePassword'])->name('user.change-password');
 
     Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetRequest']); // OTP or Email
     Route::post('/verify-reset-otp', [ForgotPasswordController::class, 'verifyResetOtp']); // OTP verification

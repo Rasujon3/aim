@@ -45,6 +45,14 @@ class RegisterRequest extends FormRequest
             return User::profileUpdateRules($this);
         }
 
+        if ($routeName === 'user.info') {
+            return User::userInfoRules($this);
+        }
+
+        if ($routeName === 'user.profile.delete') {
+            return User::userInfoRules($this);
+        }
+
         if ($routeName === 'user.change-password') {
             return User::changePasswordRules($this);
         }
