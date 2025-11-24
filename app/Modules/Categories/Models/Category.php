@@ -3,6 +3,7 @@
 namespace App\Modules\Categories\Models;
 
 use App\Models\User;
+use App\Modules\Products\Models\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -48,5 +49,9 @@ class Category extends Model
     public function updatedBy() : belongsTo
     {
         return $this->belongsTo(User::class,'updated_by');
+    }
+    public function product() : hasMany
+    {
+        return $this->hasMany(Product::class,'category_id');
     }
 }
