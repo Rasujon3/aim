@@ -1,12 +1,9 @@
 <?php
 
 use App\Http\Middleware\AdminGuard;
-use App\Http\Middleware\AllowMultipleRoles;
-use App\Http\Middleware\OwnerMiddleware;
+use App\Http\Middleware\Cors;
 use App\Http\Middleware\PermissionGuard;
-use App\Http\Middleware\ReceptionistMiddleware;
 use App\Http\Middleware\SuperAdminGuard;
-use App\Http\Middleware\SuperAdminMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -19,6 +16,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        // 🔥 Global CORS Enable (Allow Everything)
+        $middleware->prepend(Cors::class);
+
+        // অথবা শুধু API রুটে লাগাতে চাইলে:
+//         $middleware->api(prepend: [Cors::class]);
+
         $middleware->alias([
             'super_admin' => SuperAdminGuard::class,
             'admin' => AdminGuard::class,
