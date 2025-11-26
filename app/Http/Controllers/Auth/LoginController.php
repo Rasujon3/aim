@@ -46,12 +46,24 @@ class LoginController extends AppBaseController
             // JWT token create
             $token = JWTAuth::fromUser($user);
 
+            $cookie = cookie(
+                'token',         // cookie name
+                $token,          // value
+                60 * 24 * 7,     // minutes (7 days)
+                '/',             // path
+                null,            // domain (null = same domain)
+                true,            // secure: https only
+                true,            // httpOnly: JS cannot access
+                false,
+                'Strict'         // SameSite
+            );
+
             return $this->sendResponse([
                 'token' => $token,
                 'token_type' => 'bearer',
                 'expires_in' => auth('api')->factory()->getTTL() * 60,
                 'user' => $user
-            ], 'Login successful.');
+            ], 'Login successful.')->cookie($cookie);
 
         } catch (Exception $e) {
             // Log the error
