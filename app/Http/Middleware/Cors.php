@@ -11,16 +11,15 @@ class Cors
     {
         $response = $next($request);
 
-        // তোমার frontend origin (ডেভেলপমেন্ট + প্রোডাকশন)
+        // frontend origin
         $allowedOrigins = [
             'http://localhost:3000',
-            'https://aim.rit-global.com',     // যদি frontend একই ডোমেইনে থাকে
-            // প্রোডাকশন frontend যোগ করো পরে
+            'https://aim.rit-global.com',
         ];
 
         $origin = $request->headers->get('Origin');
 
-        // যদি origin allowed list এ থাকে, তাহলে সেট করো, নইলে *
+        // origin allowed list
         if ($origin && in_array($origin, $allowedOrigins)) {
             $response->headers->set('Access-Control-Allow-Origin', $origin);
         } else {
@@ -30,7 +29,7 @@ class Cors
         $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
         $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin, X-CSRF-TOKEN');
 
-        // এটা খুব জরুরি — credentials allow করতে
+        // credentials allow
         $response->headers->set('Access-Control-Allow-Credentials', 'true');
 
         // Preflight request

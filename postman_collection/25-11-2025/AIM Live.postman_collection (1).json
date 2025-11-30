@@ -1,0 +1,2306 @@
+{
+	"info": {
+		"_postman_id": "cb1496a6-d8eb-4597-a75a-02a01b785187",
+		"name": "AIM Live",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29401253"
+	},
+	"item": [
+		{
+			"name": "Company Copy",
+			"item": [
+				{
+					"name": "Company List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/companies/list",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"companies",
+								"list"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Company Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "logo",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "logo_dark",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "qrcode",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "name",
+									"value": " RIT Global Ltd.",
+									"type": "text"
+								},
+								{
+									"key": "contact_person",
+									"value": " Md. Rahim Khan",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": " info@rit-global.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": " +880 2 1234567",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": " House 45, Road 12, Block F, Banani",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": " Dhaka",
+									"type": "text"
+								},
+								{
+									"key": "postal_code",
+									"value": " 1213",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": " Dhaka",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": " Bangladesh",
+									"type": "text"
+								},
+								{
+									"key": "show_name",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "show_address",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "allow_transfer",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "bank_account_details",
+									"value": " Account Name: RIT Global Ltd.",
+									"type": "text"
+								},
+								{
+									"key": "Bank",
+									"value": " BRAC Bank Limited",
+									"type": "text"
+								},
+								{
+									"key": "Branch",
+									"value": " Gulshan",
+									"type": "text"
+								},
+								{
+									"key": "Account No",
+									"value": " 1234567890",
+									"type": "text"
+								},
+								{
+									"key": "Routing No",
+									"value": " 123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/companies/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"companies",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Company View",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/companies/view/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"companies",
+								"view",
+								"1"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Company Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/C:/Users/User/Downloads/WhatsApp Image 2025-10-28 at 11.11.48 AM.jpeg"
+								},
+								{
+									"key": "logo_dark",
+									"type": "file",
+									"src": "/C:/Users/User/Downloads/Ruhul_Amin_Sujon.jpeg"
+								},
+								{
+									"key": "qrcode",
+									"type": "file",
+									"src": "/C:/Users/User/Downloads/shap1.png"
+								},
+								{
+									"key": "name",
+									"value": " RIT Global Ltd. Update",
+									"type": "text"
+								},
+								{
+									"key": "contact_person",
+									"value": " Md. Rahim Khan Update",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": " info.update@rit-global.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": " +880 2 1234566",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": " House 45, Road 12, Block F, Banani  Update",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": " Dhaka  Update",
+									"type": "text"
+								},
+								{
+									"key": "postal_code",
+									"value": " 1234",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": " Dhaka  Update",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": " Bangladesh  Update",
+									"type": "text"
+								},
+								{
+									"key": "show_name",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "show_address",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "allow_transfer",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "bank_account_details",
+									"value": " Account Name: RIT Global Ltd.  Update",
+									"type": "text"
+								},
+								{
+									"key": "Bank",
+									"value": " BRAC Bank Limited  Update",
+									"type": "text"
+								},
+								{
+									"key": "Branch",
+									"value": " Gulshan Update",
+									"type": "text"
+								},
+								{
+									"key": "Account No",
+									"value": " 1234567899",
+									"type": "text"
+								},
+								{
+									"key": "Routing No",
+									"value": " 1234567890",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/companies/update/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"companies",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Company Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/companies/delete/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"companies",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "super.admin@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product Copy",
+			"item": [
+				{
+					"name": "Product List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/products/list",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"products",
+								"list"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "PROD-001",
+									"description": "'required', 'unique'",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Dell Inspiron 15 3520",
+									"description": "'required', 'unique'",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "75000.00",
+									"description": "required",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "details",
+									"value": "13th Gen Intel Core i5, 16GB RAM, 512GB SSD, 15.6\" FHD Display, Windows 11",
+									"type": "text"
+								},
+								{
+									"key": "tax_rate_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/C:/Users/User/Downloads/shap1.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/products/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product View",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/products/view/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"products",
+								"view",
+								"1"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "PROD-001 update",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Dell Inspiron 15 3520 update",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "85000.00",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "details",
+									"value": "13th Gen Intel Core i5, 16GB RAM, 512GB SSD, 15.6\" FHD Display, Windows 11  update",
+									"type": "text"
+								},
+								{
+									"key": "tax_rate_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/C:/Users/User/Downloads/WhatsApp Image 2025-10-28 at 11.11.48 AM.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/products/update/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"products",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/products/delete/9",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"products",
+								"delete",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "super.admin@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TaxRate Copy",
+			"item": [
+				{
+					"name": "TaxRate List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/taxRates/list",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"taxRates",
+								"list"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TaxRate Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Rate 1",
+									"description": "'required', 'unique:tax_rates,name'",
+									"type": "text"
+								},
+								{
+									"key": "rate",
+									"value": "10",
+									"description": "'required', 'min:1', 'max:999999.99'",
+									"type": "text"
+								},
+								{
+									"key": "is_fixed_amount",
+									"value": "0",
+									"description": "'required', '0,1'",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/taxRates/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"taxRates",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TaxRate View",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/taxRates/view/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"taxRates",
+								"view",
+								"1"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TaxRate Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Rate 1 up",
+									"type": "text"
+								},
+								{
+									"key": "rate",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "is_fixed_amount",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/taxRates/update/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"taxRates",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TaxRate Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/taxRates/delete/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"taxRates",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "super.admin@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Registration Copy",
+			"item": [
+				{
+					"name": "Login & Get Token Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.globals.set(\"token\", responseData.data.token);\r",
+									"    // pm.collectionVariables.set(\"token\", responseData.data.token);\r",
+									"    console.log(\"Token set in collection variable successfully.\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "super.admin@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token Copy 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.globals.set(\"token\", responseData.data.token);\r",
+									"    // pm.collectionVariables.set(\"token\", responseData.data.token);\r",
+									"    console.log(\"Token set in collection variable successfully.\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "ruhul.admin@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "full_name",
+									"value": "Ruhul Admin",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ruhul.admin@gmail.com",
+									"description": "unique:users,email",
+									"type": "text"
+								},
+								{
+									"key": "role_id",
+									"value": "2",
+									"description": "exists:roles,id",
+									"type": "text"
+								},
+								{
+									"key": "is_view_all",
+									"value": "0",
+									"description": "boolean",
+									"type": "text"
+								},
+								{
+									"key": "is_create_all",
+									"value": "0",
+									"description": "boolean",
+									"type": "text"
+								},
+								{
+									"key": "is_edit_all",
+									"value": "0",
+									"description": "boolean",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"description": "min:6",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "123456",
+									"description": "min:6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/register",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-profile-update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "full_name",
+									"value": "Ruhul Admin",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ruhul.admin@gmail.com",
+									"description": "unique:users,email",
+									"type": "text"
+								},
+								{
+									"key": "role_id",
+									"value": "2",
+									"description": "exists:roles,id",
+									"type": "text"
+								},
+								{
+									"key": "is_view_all",
+									"value": "1",
+									"description": "boolean",
+									"type": "text"
+								},
+								{
+									"key": "is_create_all",
+									"value": "1",
+									"description": "boolean",
+									"type": "text"
+								},
+								{
+									"key": "is_edit_all",
+									"value": "1",
+									"description": "boolean",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"description": "min:6",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "123456",
+									"description": "min:6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/user-profile-update",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"user-profile-update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-profile-delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/user-profile-delete",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"user-profile-delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-info",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/user-info?user_id=2",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"user-info"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/user-list",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"user-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"token\", \"\");"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "sujon.egov@gmail.com",
+									"description": "email or phone",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/logout",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category Copy",
+			"item": [
+				{
+					"name": "Category List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/categories/list",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"categories",
+								"list"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Cat 1",
+									"type": "text"
+								},
+								{
+									"key": "details",
+									"value": "details details details details",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/categories/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"categories",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category View",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/categories/view/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"categories",
+								"view",
+								"1"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Cat 1 update",
+									"type": "text"
+								},
+								{
+									"key": "details",
+									"value": "details details details update",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/categories/update/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"categories",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/categories/delete/1",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"categories",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "super.admin@gmail.com",
+									"description": "email or phone",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role Copy",
+			"item": [
+				{
+					"name": "Role List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/roles/list",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"roles",
+								"list"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Role Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Customer",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/roles/create",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"roles",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Role View",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/roles/view/2",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"roles",
+								"view",
+								"2"
+							],
+							"query": [
+								{
+									"key": "hotel_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Role Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Customers",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/roles/update/2",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"roles",
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Role Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/roles/delete/2",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"roles",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login & Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"if (responseData.success && responseData.data.token) {\r",
+									"    pm.collectionVariables.set(\"token\", responseData.data.token);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "login",
+									"value": "super.admin@gmail.com",
+									"description": "email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}api/v1/login",
+							"host": [
+								"{{base_url}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
