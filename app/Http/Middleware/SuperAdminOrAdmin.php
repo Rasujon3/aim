@@ -6,11 +6,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminGuard
+class SuperAdminOrAdmin
 {
-    /**
-     * Handle an incoming request.
-     */
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
@@ -22,13 +19,14 @@ class AdminGuard
             ], 401);
         }
 
-        if ($user->role !== 'Admin' || $user->role !== 'admin') {
-            return response()->json([
-                'success' => false,
-                'message' => 'Access denied. Admin privileges required.'
-            ], 403);
+        // Super Admin, Admin => allow
+        if (in_array($user->role, ['super_admin', 'Admin', 'admin'])) {
+            return $next($request);
         }
 
-        return $next($request);
+        return response()->json([
+            'success' => false,
+            'message' => 'Access denied. Super Admin or Admin required.'
+        ], 403);
     }
 }

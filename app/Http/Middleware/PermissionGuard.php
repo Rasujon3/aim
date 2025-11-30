@@ -15,7 +15,7 @@ class PermissionGuard
         if (!$user) {
             return response()->json([
                 'success' => false,
-                'message' => 'Unauthenticated.'
+                'message' => 'Unauthenticated. Please login first.'
             ], 401);
         }
 
@@ -51,7 +51,7 @@ class PermissionGuard
 
             case 'delete':
                 if (str()->contains($routeName, '.delete')) {
-                    if (!in_array($user->role, ['super_admin', 'Admin'])) {
+                    if (!in_array($user->role, ['super_admin', 'Admin', 'admin'])) {
                         return response()->json([
                             'success' => false,
                             'message' => 'You are not authorized to delete this resource.'
