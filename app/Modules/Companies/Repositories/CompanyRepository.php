@@ -25,21 +25,21 @@ class CompanyRepository
 
             // Correct way to check file
             if (isset($data['logo']) && $data['logo'] instanceof UploadedFile && $data['logo']->isValid()) {
-                $filePath = $this->storeFile($data['logo'], 'company', 'logo_');
+                $filePath = $this->storeFile($data['logo'], 'uploads/company', 'logo_');
                 $data['logo'] = $filePath;
             } else {
                 $data['logo'] = null;
             }
 
             if (isset($data['logo_dark']) && $data['logo_dark'] instanceof UploadedFile && $data['logo_dark']->isValid()) {
-                $filePath = $this->storeFile($data['logo_dark'], 'company', 'logoDark_');
+                $filePath = $this->storeFile($data['logo_dark'], 'uploads/company', 'logoDark_');
                 $data['logo_dark'] = $filePath;
             } else {
                 $data['logo_dark'] = null;
             }
 
             if (isset($data['qrcode']) && $data['qrcode'] instanceof UploadedFile && $data['qrcode']->isValid()) {
-                $filePath = $this->storeFile($data['qrcode'], 'company', 'qrcode_');
+                $filePath = $this->storeFile($data['qrcode'], 'uploads/company', 'qrcode_');
                 $data['qrcode'] = $filePath;
             } else {
                 $data['qrcode'] = null;
@@ -73,17 +73,17 @@ class CompanyRepository
 
             // Correct way to check file
             if (isset($data['logo']) && $data['logo'] instanceof UploadedFile && $data['logo']->isValid()) {
-                $filePath = $this->updateFile($data['logo'], 'company', 'logo_', $company->logo);
+                $filePath = $this->updateFile($data['logo'], 'uploads/company', 'logo_', $company->logo);
                 $data['logo'] = $filePath;
             }
 
             if (isset($data['logo_dark']) && $data['logo_dark'] instanceof UploadedFile && $data['logo_dark']->isValid()) {
-                $filePath = $this->updateFile($data['logo_dark'], 'company', 'logoDark_', $company->logo_dark);
+                $filePath = $this->updateFile($data['logo_dark'], 'uploads/company', 'logoDark_', $company->logo_dark);
                 $data['logo_dark'] = $filePath;
             }
 
             if (isset($data['qrcode']) && $data['qrcode'] instanceof UploadedFile && $data['qrcode']->isValid()) {
-                $filePath = $this->updateFile($data['qrcode'], 'company', 'qrcode_', $company->qrcode);
+                $filePath = $this->updateFile($data['qrcode'], 'uploads/company', 'qrcode_', $company->qrcode);
                 $data['qrcode'] = $filePath;
             }
 

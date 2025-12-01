@@ -27,7 +27,7 @@ class ProductRepository
 
             // Correct way to check file
             if (isset($data['photo']) && $data['photo'] instanceof UploadedFile && $data['photo']->isValid()) {
-                $filePath = $this->storeFile($data['photo'], 'products', 'product_');
+                $filePath = $this->storeFile($data['photo'], 'uploads/products', 'product_');
                 $data['photo'] = $filePath;
             } else {
                 $data['photo'] = null;
@@ -61,7 +61,7 @@ class ProductRepository
 
             // Correct way to check file
             if (isset($data['photo']) && $data['photo'] instanceof UploadedFile && $data['photo']->isValid()) {
-                $filePath = $this->updateFile($data['photo'], 'products', 'product_', $product->photo);
+                $filePath = $this->updateFile($data['photo'], 'uploads/products', 'product_', $product->photo);
                 $data['photo'] = $filePath;
             }
 

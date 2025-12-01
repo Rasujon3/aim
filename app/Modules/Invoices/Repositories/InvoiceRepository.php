@@ -45,7 +45,7 @@ class InvoiceRepository
             if (isset($data['attachments']) && is_array($data['attachments'])) {
                 foreach ($data['attachments'] as $attachment) {
                     if ($attachment && $attachment instanceof UploadedFile && $attachment->isValid()) {
-                        $filePath = $this->storeFile($attachment, 'invoices', 'invoice_');
+                        $filePath = $this->storeFile($attachment, 'uploads/invoices', 'invoice_');
                         InvoiceAttachment::create([
                             'invoice_id' => $invoice->id,
                             'img' => $filePath
@@ -53,9 +53,6 @@ class InvoiceRepository
                     }
                 }
             }
-
-            // Create the record in the database
-            $created = Invoice::create($data);
 
             DB::commit();
 
@@ -74,23 +71,51 @@ class InvoiceRepository
             return null;
         }
     }
-    public function update(Invoice $product, array $data, $userId)
+    public function update(Invoice $invoice, array $data, $userId)
     {
         DB::beginTransaction();
         try {
             $data['updated_by'] = $userId;
 
             // Correct way to check file
-            if (isset($data['photo']) && $data['photo'] instanceof UploadedFile && $data['photo']->isValid()) {
-                $filePath = $this->updateFile($data['photo'], 'products', 'product_', $product->photo);
-                $data['photo'] = $filePath;
+            if (isset($data['items']) && is_array($data['items'])) {
+                // Delete existing items
+                InvoiceItem::where('invoice_id', $invoice->id)->delete();
+
+                // Create new items
+                foreach ($data['items'] as $itemData) {
+                    $itemData['invoice_id'] = $invoice->id;
+                    InvoiceItem::create($itemData);
+                }
+            }
+
+            if (isset($data['attachments']) && is_array($data['attachments'])) {
+                // 1st fetch attachments ids for specific invoice
+                $existingAttachments = InvoiceAttachment::where('invoice_id', $invoice->id)->get();
+                // 2nd delete existing attachments files from storage
+                foreach ($existingAttachments as $existingAttachment) {
+                    $this->deleteOldFile($existingAttachment->img);
+                }
+                // 3rd delete existing attachments records from database
+                InvoiceAttachment::where('invoice_id', $invoice->id)->delete();
+
+                // 4th store new attachments files and records in database
+                foreach ($data['attachments'] as $attachment) {
+                    if ($attachment && $attachment instanceof UploadedFile && $attachment->isValid()) {
+                        $filePath = $this->storeFile($attachment, 'uploads/invoices', 'invoice_');
+                        InvoiceAttachment::create([
+                            'invoice_id' => $invoice->id,
+                            'img' => $filePath
+                        ]);
+                    }
+                }
             }
 
             // Perform the update
-            $product->update($data);
+            $invoice->update($data);
 
             DB::commit();
-            return $this->find($product->id);
+            return $this->find($invoice->id);
         } catch (Exception $e) {
             DB::rollBack();
 
@@ -106,16 +131,26 @@ class InvoiceRepository
         }
     }
     // In FloorRepository.php
-    public function delete(Invoice $product)
+    public function delete(Invoice $invoice)
     {
         DB::beginTransaction();
         try {
             // 1. Delete associated files
-            if (!empty($product->photo)) {
-                $this->deleteOldFile($product->photo);
+
+            // 1st fetch attachments ids for specific invoice
+            $existingAttachments = InvoiceAttachment::where('invoice_id', $invoice->id)->get();
+            // 2nd delete existing attachments files from storage
+            foreach ($existingAttachments as $existingAttachment) {
+                $this->deleteOldFile($existingAttachment->img);
             }
-            // 5. Finally, delete the data itself
-            $product->delete();
+            // 3rd delete existing attachments records from database
+            InvoiceAttachment::where('invoice_id', $invoice->id)->delete();
+
+            // 2. Delete related InvoiceItems
+            InvoiceItem::where('invoice_id', $invoice->id)->delete();
+
+            // 3. Finally, delete the data itself
+            $invoice->delete();
 
             DB::commit();
             return true;
@@ -124,7 +159,7 @@ class InvoiceRepository
             DB::rollBack();
 
             Log::error('Error deleting data: ' , [
-                'id' => $product->id,
+                'id' => $invoice->id,
                 'message' => $e->getMessage(),
                 'code' => $e->getCode(),
                 'line' => $e->getLine(),
@@ -136,7 +171,7 @@ class InvoiceRepository
     }
     public function find($id)
     {
-        return Invoice::with('category', 'taxRate')->find($id);
+        return Invoice::with('items', 'attachments', 'taxRate', 'company', 'customer')->find($id);
     }
     private function generateInvoiceNumber()
     {
@@ -148,7 +183,7 @@ class InvoiceRepository
             ->whereMonth('created_at', $month)
             ->count();
 
-        $sequence = str_pad($count + 1, 4, '0', STR_PAD_LEFT); // 0001, 0002, 0003...
+        $sequence = str_pad($count + 1, 4, '0', STR_PAD_LEFT);
 
         return "INV/{$year}/{$month}/{$sequence}";
     }

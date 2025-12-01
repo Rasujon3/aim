@@ -63,7 +63,7 @@ class InvoiceController extends AppBaseController
 
         $updated = $this->invoiceRepository->update($data, $request->all(), $user?->id);
         if (!$updated) {
-            return $this->sendError('Something went wrong!!! [RC-02]', 500);
+            return $this->sendError('Something went wrong!!! [IC-02]', 500);
         }
 
         return $this->sendResponse($updated, 'Data updated successfully!');
@@ -77,7 +77,11 @@ class InvoiceController extends AppBaseController
             return $this->sendError('Data not found');
         }
 
-        $this->invoiceRepository->delete($data);
+        $deleted = $this->invoiceRepository->delete($data);
+        if (!$deleted) {
+            return $this->sendError('Something went wrong!!! [IC-03]', 500);
+        }
+
         return $this->sendSuccess('Data deleted successfully!');
     }
 }
