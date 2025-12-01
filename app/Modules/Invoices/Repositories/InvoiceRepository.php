@@ -16,7 +16,9 @@ class InvoiceRepository
 {
     public function all()
     {
-        $data = Invoice::latest()->get();
+        $data = Invoice::with('items', 'attachments', 'taxRate', 'company', 'customer')
+            ->latest()
+            ->get();
 
         return $data;
     }
