@@ -6,6 +6,7 @@ use App\Modules\Invoices\Models\Invoice;
 use App\Modules\Invoices\Models\InvoiceAttachment;
 use App\Modules\Invoices\Models\InvoiceItem;
 use App\Modules\Products\Models\Product;
+use App\Modules\Settings\Models\Setting;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -187,7 +188,13 @@ class InvoiceRepository
 
         $sequence = str_pad($count + 1, 4, '0', STR_PAD_LEFT);
 
-        return "INV/{$year}/{$month}/{$sequence}";
+        $prefix = 'INV/'; // You can set a prefix if needed
+        $invPrefix = Setting::value('invoice_number_prefix');
+        if (!empty($invPrefix)) {
+            $prefix = $invPrefix;
+        }
+
+        return "$prefix{$year}/{$month}/{$sequence}";
     }
     private function storeFile($file, $filePath, $prefix)
     {
