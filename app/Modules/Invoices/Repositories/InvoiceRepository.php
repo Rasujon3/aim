@@ -32,6 +32,7 @@ class InvoiceRepository
 
             $data['invoice_number'] = $this->generateInvoiceNumber();
             $data['hash'] = Str::uuid();
+            $data['due_amount'] = $data['grand_total'];
 
             // Create Invoice
             $invoice = Invoice::create($data);

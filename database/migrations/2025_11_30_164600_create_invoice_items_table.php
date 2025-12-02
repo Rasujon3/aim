@@ -20,24 +20,24 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->text('details')->nullable();
 
-            // Pricing
-            $table->decimal('quantity', 15, 4)->default(1);
-            $table->decimal('price', 15, 4)->default(0);
-            $table->decimal('unit_price', 15, 4)->default(0);
-            $table->decimal('net_price', 15, 4)->default(0);
+            // Pricing & Quantity
+            $table->integer('quantity')->nullable()->default(1);
+            $table->decimal('price', 15, 4)->nullable()->default(0);
+            $table->decimal('unit_price', 15, 4)->nullable()->default(0);
+            $table->decimal('net_price', 15, 4)->nullable()->default(0);
 
             // Tax & Discount
             $table->foreignId('tax_rate_id')->nullable()->constrained('tax_rates')->onDelete('cascade');
-            $table->decimal('discount', 15, 4)->default(0);
-            $table->decimal('discount_amount', 15, 4)->default(0);
+            $table->decimal('discount', 15, 4)->nullable()->default(0);
+            $table->decimal('discount_amount', 15, 4)->nullable()->default(0);
 
-            $table->decimal('tax_amount', 15, 4)->default(0);
+            $table->decimal('tax_amount', 15, 4)->nullable()->default(0);
 
-            $table->decimal('total_discount_amount', 15, 4)->default(0);
-            $table->decimal('total_tax_amount', 15, 4)->default(0);
+            $table->decimal('total_discount_amount', 15, 4)->nullable()->default(0);
+            $table->decimal('total_tax_amount', 15, 4)->nullable()->default(0);
 
             // Final line total
-            $table->decimal('total', 15, 4)->default(0);
+            $table->decimal('total', 15, 4)->nullable()->default(0);
 
             $table->timestamps();
         });

@@ -42,6 +42,7 @@ class Invoice extends Model
         'product_discount_amount',
         'total_discount_amount',
         'paid',
+        'due_amount',
         'note',
         'status',
         'created_by',
