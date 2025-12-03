@@ -22,7 +22,7 @@ Route::prefix('/v1')->middleware('api')->group(function () {
 
     Route::post('/change-password', [RegisterController::class, 'changePassword'])->name('user.change-password');
 
-    Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetRequest']); // OTP or Email
+    Route::post('/forgot-password', [ForgotPasswordController::class, 'sendOtp']); // OTP or Email
     Route::post('/verify-reset-otp', [ForgotPasswordController::class, 'verifyResetOtp']); // OTP verification
     Route::post('/reset-password', [ForgotPasswordController::class, 'resetPasswords']); // Reset via OTP
     Route::post('/password/reset', [ForgotPasswordController::class, 'resetPasswordWithToken']); // Reset via email token

@@ -29,6 +29,9 @@ class Setting extends Model
         'invoice_number_prefix',
         'quotation_number_prefix',
         'payment_number_prefix',
+        'emailjs_service_id',
+        'emailjs_template_id',
+        'emailjs_user_id',
         'created_by',
         'updated_by',
     ];

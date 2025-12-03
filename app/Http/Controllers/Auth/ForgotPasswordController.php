@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Admin\Models\Setting;
+use App\Modules\Settings\Models\Setting;
+use App\Services\EmailJsService;
 use App\Services\SmsService;
 use Carbon\Carbon;
 use Exception;
@@ -16,47 +17,58 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Http\Controllers\AppBaseController;
+use Random\RandomException;
 
 
 class ForgotPasswordController extends AppBaseController
 {
     /**
      * Send Reset Request (OTP if enabled, otherwise email)
+     * @throws RandomException
      */
-    public function sendResetRequest(Request $request)
+    public function sendOtp(Request $request)
     {
         $request->validate([
-            'username' => 'required|string',
+            'email' => 'required|email'
         ]);
 
-        // Find user by username or email
-        $user = User::where('username', $request->username)
-            ->orWhere('email', $request->username)
-            ->first();
+        $user = User::where('email', $request->email)->first();
 
         if (!$user) {
-            return $this->sendError('User not found.', 404);
+            return response()->json(['message' => 'Email not found'], 404);
         }
 
-        if ($user->otp_enabled) {
-            // OTP-based reset
-            $otp = rand(100000, 999999);
-            $user->update(['otp' => $otp]);
-
-            // Assume sendOtp() method sends OTP to the user
-            $user->sendOtp();
-
-            return $this->sendSuccess('OTP sent to your phone number.');
-        } else {
-            // Email-based reset
-            $status = Password::sendResetLink(['email' => $user->email]);
-
-            return $status === Password::RESET_LINK_SENT
-                ? $this->sendSuccess('Password reset link sent to your email.')
-                : $this->sendError('Failed to send reset link.', 500);
+        $setting = Setting::first();
+        if (!$setting?->emailjs_service_id || !$setting?->emailjs_template_id || !$setting?->emailjs_user_id) {
+            return response()->json(['message' => 'EmailJS not setup properly.'], 500);
         }
+
+        DB::beginTransaction();
+        try {
+            // Generate 6-digit OTP
+            $otp = random_int(100000, 999999);
+
+            // Hash OTP before storing
+            $user->token = Hash::make($otp);
+            $user->save();
+
+            // Send email using EmailJS
+            EmailJsService::sendOtpEmail($user->email, $otp);
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            Log::error('EmailJS Error: ', [
+                'message' => $e->getMessage(),
+                'code' => $e->getCode(),
+                'line' => $e->getLine()
+            ]);
+
+            return response()->json(['message' => 'Failed to send OTP'], 500);
+        }
+
+        DB::commit();
+        return response()->json(['message' => 'OTP sent to your email'], 200);
     }
-
     /**
      * Verify OTP for Password Reset (if OTP Enabled)
      */
@@ -87,21 +99,29 @@ class ForgotPasswordController extends AppBaseController
     public function resetPasswords(Request $request)
     {
         $request->validate([
-            'username' => 'required|string',
-            'password' => 'required|string|min:6|confirmed',
+            'email'                => 'required|email',
+            'otp'                  => 'required',
+            'new_password'         => 'required|min:6',
+            'confirm_new_password' => 'required|same:new_password',
         ]);
 
-        $user = User::where('username', $request->username)
-            ->first();
+        $user = User::where('email', $request->email)->first();
 
         if (!$user) {
-            return $this->sendError('User not found.', 404);
+            return response()->json(['message' => 'Invalid email'], 404);
         }
 
-        // Update new password
-        $user->update(['password' => Hash::make($request->password)]);
+        // OTP verify
+        if (!Hash::check($request->otp, $user->token)) {
+            return response()->json(['message' => 'Invalid OTP'], 400);
+        }
 
-        return $this->sendSuccess('Password reset successfully.');
+        // Update password
+        $user->password = Hash::make($request->new_password);
+        $user->token = null; // clear otp
+        $user->save();
+
+        return response()->json(['message' => 'Password reset successfully'], 200);
     }
 
     /**
