@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('settings', function (Blueprint $table) {
-            //
+            $table->string('emailjs_user_id')->nullable()->after('payment_number_prefix');
+            $table->string('emailjs_template_id')->nullable()->after('payment_number_prefix');
+            $table->string('emailjs_service_id')->nullable()->after('payment_number_prefix');
         });
     }
 
@@ -22,9 +24,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->string('emailjs_user_id')->nullable()->after('payment_number_prefix');
-            $table->string('emailjs_template_id')->nullable()->after('payment_number_prefix');
-            $table->string('emailjs_service_id')->nullable()->after('payment_number_prefix');
+            //
         });
     }
 };

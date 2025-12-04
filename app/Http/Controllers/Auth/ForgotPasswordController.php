@@ -47,6 +47,9 @@ class ForgotPasswordController extends AppBaseController
         try {
             // Generate 6-digit OTP
             $otp = random_int(100000, 999999);
+            Log::error('$otp: ', [
+                '$otp' => $otp
+            ]);
 
             // Hash OTP before storing
             $user->token = Hash::make($otp);
@@ -54,7 +57,7 @@ class ForgotPasswordController extends AppBaseController
 
             // Send email using EmailJS
             EmailJsService::sendOtpEmail($user->email, $otp);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
             Log::error('EmailJS Error: ', [
